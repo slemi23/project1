@@ -8,7 +8,14 @@ QtWidgets.QApplication.setAttribute(QtCore.Qt.AA_UseHighDpiPixmaps, True)
 
 
 class Controller(QMainWindow, Ui_MainWindow):
+    """
+    Class for main menu window, shop and exit buttons
+
+    """
     def __init__(self, *args, **kwargs):
+        """"
+        Constructor to create shop and exit object buttons
+        """
         super().__init__(*args, **kwargs)
         self.setupUi(self)
 
@@ -16,17 +23,33 @@ class Controller(QMainWindow, Ui_MainWindow):
         self.exit_button.clicked.connect(lambda: self.exit())
 
     def shop(self):
+        """
+        Function for button when clicked, takes user to cart menu window
+
+        """
         self.windows = QtWidgets.QMainWindow()
         self.ui = Ui_SecondWindow()
         self.ui.setupUi(self.windows)
         self.windows.show()
 
     def exit(self):
+        """
+        Function that exits main menu window
+
+        """
         self.close()
 
 
 class Controller2(QMainWindow, Ui_SecondWindow):
+    """"
+    Class for cart menu window that takes users input and calculates grand total
+    """
     def __init__(self, *args, **kwargs):
+        """
+        Constructor for total and exit buttons
+        :param args:
+        :param kwargs:
+        """
         super().__init__(*args, **kwargs)
         self.setupUi(self)
 
@@ -34,6 +57,10 @@ class Controller2(QMainWindow, Ui_SecondWindow):
         self.exit2_button.clicked.connect(self.exit2)
 
     def grandtotal(self):
+        """
+        Function that calculates total amount for cookies, sandwich, and water, outputs total
+        :return: Grand total amount
+        """
         try:
             cookie = int(self.cookie_input.text())
             sandwich = int(self.sandwich_input.text())
@@ -57,4 +84,7 @@ class Controller2(QMainWindow, Ui_SecondWindow):
         self.water_input.setText('')
 
     def exit2(self):
+        """"
+        Function that exits cart menu window
+        """
         self.close()
