@@ -57,7 +57,7 @@ class Controller(QMainWindow, Ui_MainWindow):
             total_price = cookie_total + sandwich_total + water_total
 
             self.total_label.setText(
-                f'\n({cookie}) - Cookie: \t\t${cookie_total:.2f}\n({sandwich}) - Sandwich: \t\t${sandwich_total:.2f}\n'
+                f'\n({cookie}) - Cookie: \t\t${cookie_total:.2f}\n({sandwich}) - Sandwich: \t${sandwich_total:.2f}\n'
                 f'({water}) - Water: \t\t${water_total:.2f}\n\tGrand Total = {total_price:.2f}')
 
         except ValueError:
@@ -82,3 +82,4 @@ class Controller(QMainWindow, Ui_MainWindow):
         self.exit_button.show()
 
         self.main_or_cart.setText('Main Menu')
+
