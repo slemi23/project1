@@ -6,7 +6,14 @@ QtWidgets.QApplication.setAttribute(QtCore.Qt.AA_EnableHighDpiScaling, True)
 QtWidgets.QApplication.setAttribute(QtCore.Qt.AA_UseHighDpiPixmaps, True)
 
 class Controller(QMainWindow, Ui_MainWindow):
-    def __init__(self, *args, **kwargs):
+    """
+    Class representing details for the shopping cart and its menu
+    """
+    def __init__(self, *args, **kwargs) -> None:
+        """
+        Constructor to initialize state of the object
+
+        """
         super().__init__(*args, **kwargs)
         self.setupUi(self)
 
@@ -26,7 +33,10 @@ class Controller(QMainWindow, Ui_MainWindow):
 
         self.main_or_cart.setText('Main Menu')
 
-    def shop(self):
+    def shop(self) -> None:
+        """
+        Function to display details once shop button is pressed
+        """
         self.shop_button.hide()
         self.exit_button.hide()
         self.main_or_cart.setText('Cart Menu')
@@ -41,11 +51,19 @@ class Controller(QMainWindow, Ui_MainWindow):
         self.exit2_button.show()
 
 
-    def exit(self):
+    def exit(self) -> None:
+        """
+        Function to close window
+        """
         self.close()
 
-    def grandtotal(self):
+    def grandtotal(self) -> None:
+        """
+        Function to receive and calculate user inputs and then display total
+        :return: total of all items
+        """
         try:
+            # Grabs user inputs and calculates total
             cookie = int(self.cookie_input.text())
             sandwich = int(self.sandwich_input.text())
             water = int(self.water_input.text())
@@ -67,7 +85,10 @@ class Controller(QMainWindow, Ui_MainWindow):
         self.sandwich_input.setText('')
         self.water_input.setText('')
 
-    def exit2(self):
+    def exit2(self) -> None:
+        """
+        Function to close window and displays main menu options
+        """
         self.cookie_label.hide()
         self.sandwich_label.hide()
         self.water_label.hide()
